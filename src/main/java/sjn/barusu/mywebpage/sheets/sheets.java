@@ -13,11 +13,9 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import org.mortbay.jetty.HttpParser;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
@@ -33,6 +31,7 @@ public class sheets {
      */
     private static final List<String> SCOPES = Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
     private static final String CREDENTIALS_FILE_PATH = "client_secret.json";
+    private static final String CREDENTIALS = System.getenv("client_secret");
 
     /**
      * Creates an authorized Credential object.
@@ -43,7 +42,8 @@ public class sheets {
      */
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
         // Load client secrets.
-        InputStream in = sheets.class.getResourceAsStream("/" + CREDENTIALS_FILE_PATH);
+        //InputStream in = sheets.class.getResourceAsStream("/" + CREDENTIALS_FILE_PATH);
+        InputStream in = new ByteArrayInputStream(CREDENTIALS.getBytes());
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
         }
