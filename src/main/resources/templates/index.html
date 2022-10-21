@@ -3,50 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="css/pokeft.css">
 </head>
 <body>
 
-<script th:inline="javascript">
-/*<![CDATA[*/
-var gen8 = /*[[${gen8}]]*/ 'default';
-/*]]>*/
-$( document ).ready(function() {
-    console.log(gen8[5])
-    addTable();
-});
+<div class="pokeft">
+    <div class="item" onclick="myFunction()">hallo</div>
+    <div class="item" onclick="myFunction()">hallo</div>
 
-function addTable(){
-    var table = document.createElement("table");
-    let length = 20;
-    let pos = 3;
+</div>
 
-    document.body.appendChild(table);
+<span class="popuptext" id="myPopup">Popup text...</span>
 
-    var headdata = gen8[1];
-    var head = document.createElement("th");
-    for(var i = 0; i < 18; i++){
-        var item = document.createElement("td");
-        head.appendChild(item);
-        var text = document.createTextNode(headdata[i]);
-        item.appendChild(text);
-    }
-    table.appendChild(head);
-
-    for(var i = 3; i < 20; i++){
-        var itemdata = gen8[i];
-        var row = document.createElement("tr");
-        for(var j = 0; j < 18; j++){
-            var item = document.createElement("td");
-            row.appendChild(item);
-            var text = document.createTextNode(itemdata[j]);
-            item.appendChild(text);
-        }
-        head.appendChild(row);
-    }
+<script>
+// When the user clicks on <div>, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
 }
-
 </script>
 </body>
 </html>

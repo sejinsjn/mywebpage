@@ -1,0 +1,63 @@
+.pokeft{
+    height: auto;
+    width: fit-content;
+    max-width: 80%;
+    position: relative;
+    margin: 10% auto;
+    background-color: grey;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: auto auto auto auto;
+    grid-auto-rows: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokeft .item{
+    border-radius: 25px;
+    height: 150px;
+    width: 150px;
+    margin: 7px;
+    background-color: blue;
+    text-align: center;
+    line-height: 100px;
+}
+
+.pokeft .item:hover{
+    background-color: grey;
+}
+
+.popuptext {
+  visibility: hidden;
+  width: 300px;
+  height: 300px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 25px;
+  padding: 8px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
