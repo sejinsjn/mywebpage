@@ -16,8 +16,8 @@
 
 .pokeft .item{
     border-radius: 25px;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     margin: 7px;
     background-color: blue;
     text-align: center;
@@ -31,14 +31,16 @@
 }
 
 .item img{
-    height: 75px;
-    width: 75px;
+    height: 125px;
+    width: 125px;
     margin: 0 auto;
 }
 
-.item p{
-    height: 50px;
+.item span{
+    height: 30px;
+    width: 90%;
     margin: 0 auto;
+    line-height: 1.5;
 }
 
 .popuptext {
