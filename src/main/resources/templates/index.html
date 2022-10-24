@@ -4,48 +4,18 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link rel="stylesheet" href="/static/css/pokeft.css" />
+    <script th:src="@{/js/pokeft.js}"></script>
     <link rel="stylesheet" th:href="@{/css/pokeft.css}" />
 </head>
 <body>
 
-<div class="pokeft" id="pokeft"></div>
+<div id="cards"></div>
 
-<span class="popuptext" id="myPopup">Popup text...</span>
+<div id="placeholder"></div>
 
 <script th:inline="javascript">
 var gen8 = [[${gen8}]];
-$( document ).ready(function() {
-    addItems();
-});
 
-// When the user clicks on <div>, open the popup
-function myFunction() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-}
-
-function addItems(){
-     for(var i = 3; i < 20; i++){
-        var itemdata = gen8[i];
-        var container = document.getElementById("pokeft");
-        var div = document.createElement("div");
-        div.classList.add("item");
-        div.onclick = function() { myFunction() };
-        var img = document.createElement("img");
-        var p = document.createElement("span");
-        div.appendChild(img);
-        div.appendChild(p);
-        if(itemdata[5] == "FALSE"){
-            img.src = "https://www.serebii.net/swordshield/pokemon/" + itemdata[0] + ".png";
-        }else{
-            img.src = "https://www.serebii.net/Shiny/SWSH/" + itemdata[0] + ".png";
-        }
-        const textNode = document.createTextNode(itemdata[3]);
-        p.appendChild(textNode);
-        container.appendChild(div);
-    }
-}
 </script>
 </body>
 </html>
