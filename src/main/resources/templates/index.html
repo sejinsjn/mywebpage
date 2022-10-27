@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script th:src="@{/js/pokeft.js}"></script>
-    <link rel="stylesheet" th:href="@{/css/pokeft.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script th:src="@{/js/fortrade.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
 
-<div id="cards"></div>
-
-<div id="placeholder"></div>
+<div th:replace="fragments/fortrade.html"></div>
 
 <script th:inline="javascript">
-var gen8 = [[${gen8}]];
-
+    var gen8 = [[${gen8}]];
+    var gen7 = [[${gen7}]];
+    var shinyeggs = [[${shinyeggs}]];
+    var shinymyths = [[${shinymyths}]];
 </script>
 </body>
 </html>

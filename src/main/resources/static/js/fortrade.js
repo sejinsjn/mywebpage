@@ -1,7 +1,8 @@
 function addItems(element, sheet){
+    console.log(sheet);
      for(var i = 3; i < sheet.length; i++){
         var itemdata = sheet[i];
-        var container = document.getElementById(element).getElementsByTagName("div");
+        var container = document.getElementById(element);
 
         var card = document.createElement("div");
         var cardcontent = document.createElement("div");
@@ -34,8 +35,33 @@ function addItems(element, sheet){
     }
 }
 
-function createPopup(val){
-    var itemdata = gen8[val];
+function addOnClick(){
+    for(const cards of document.getElementsByClassName("cards")){
+        for(const card of cards.getElementsByClassName("card")){
+            switch(cards.id) {
+              case "gen8":
+                card.onclick = function() { createPopup(card.id, gen8) };
+                break;
+              case "gen7":
+                card.onclick = function() { createPopup(card.id, gen7) };
+                break;
+              case "shiny-eggs":
+                card.onclick = function() { createPopup(card.id, shinyeggs) };
+                break;
+              case "shiny-myths":
+                card.onclick = function() { createPopup(card.id, shinymyths) };
+                break;
+              default:
+                card.onclick = function() { createPopup(card.id, gen8) };
+                break;
+            }
+
+        }
+    }
+}
+
+function createPopup(val, sheet){
+    var itemdata = sheet[val];
     var ph = document.getElementById("placeholder");
 
     var element = document.getElementById("popup");
@@ -109,50 +135,23 @@ function createPopup(val){
     });
 }
 
-// When the user clicks on <div>, open the popup
-function showData(val) {
-    var itemdata = gen8[val];
-    var ph = document.getElementById("placeholder");
-    const element = document.getElementById("popup");
-    if(element) { element.remove(); }
-
-    var popup = document.createElement("div");
-    popup.setAttribute("id", "popup");
-
-    var div1 = document.createElement("div");
-    var div2 = document.createElement("div");
-    div1.setAttribute("class", "div1");
-    div2.setAttribute("class", "div2");
-    popup.appendChild(div1);
-    popup.appendChild(div2);
-
-    //div1 Header
-    var title = document.createElement("span");
-    title.appendChild(document.createTextNode(itemdata[3]));
-    var exit = document.createElement("img");
-    exit.setAttribute("src", "https://cdn-icons-png.flaticon.com/512/109/109602.png");
-    exit.onclick = function() { closePopup() };
-    div1.appendChild(title);
-    div1.appendChild(exit);
-
-    popup.classList.toggle("show");
-    ph.appendChild(popup);
-}
-
 $( document ).ready(function() {
     addItems("gen8", gen8);
     addItems("gen7", gen7);
     addItems("shiny-eggs", shinyeggs);
     addItems("shiny-myths", shinymyths);
-    document.getElementById("cards").onmousemove = e => {
-      for(const card of document.getElementsByClassName("card")) {
-        const rect = card.getBoundingClientRect(),
-              x = e.clientX - rect.left,
-              y = e.clientY - rect.top;
+    addOnClick();
+    for(const cards of document.getElementsByClassName("cards")) {
+        cards.onmousemove = e => {
+          for(const card of document.getElementsByClassName("card")) {
+            const rect = card.getBoundingClientRect(),
+                  x = e.clientX - rect.left,
+                  y = e.clientY - rect.top;
 
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-      };
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
+          };
+        }
     }
 
 });
