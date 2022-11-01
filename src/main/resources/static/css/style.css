@@ -96,8 +96,8 @@ h3 {
 }
 
 .card-image img{
-    height: 60px;
-    width: 60px;
+    height: 100px;
+    width: 100px;
 }
 
 .card-info-title > h3 {
@@ -162,5 +162,6 @@ h1{
 }
 
 #popup div h4{
+    max-width: 350px;
     margin: auto;
 }

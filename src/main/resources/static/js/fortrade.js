@@ -135,23 +135,3 @@ function createPopup(val, sheet){
     });
 }
 
-$( document ).ready(function() {
-    addItems("gen8", gen8);
-    addItems("gen7", gen7);
-    addItems("shiny-eggs", shinyeggs);
-    addItems("shiny-myths", shinymyths);
-    addOnClick();
-    for(const cards of document.getElementsByClassName("cards")) {
-        cards.onmousemove = e => {
-          for(const card of document.getElementsByClassName("card")) {
-            const rect = card.getBoundingClientRect(),
-                  x = e.clientX - rect.left,
-                  y = e.clientY - rect.top;
-
-            card.style.setProperty("--mouse-x", `${x}px`);
-            card.style.setProperty("--mouse-y", `${y}px`);
-          };
-        }
-    }
-
-});
