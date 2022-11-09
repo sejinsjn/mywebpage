@@ -95,7 +95,7 @@ function createPopup(val){
 
     var div5 = document.createElement("div");
     var r3 = document.createElement("h4");
-    r3.innerHTML = "R3<br><br>" + itemdata[19];
+    r3.innerHTML = "R3 copy pasta<br><br>" + itemdata[19];
     div5.appendChild(r3);
 
     popup.appendChild(div1);

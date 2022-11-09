@@ -18,10 +18,10 @@ public class MyController {
 
     @GetMapping("/for-trade")
     public String fortrade(Model model) throws GeneralSecurityException, IOException {
-        model.addAttribute("gen8", sheets.getData("Gen 8!A1:R"));
-        model.addAttribute("gen7", sheets.getData("Gen 7!A1:R"));
-        model.addAttribute("shinymyths", sheets.getData("Shiny Mythicals!A1:R"));
-        model.addAttribute("shinyeggs", sheets.getData("Shiny Eggs!A1:R"));
+        model.addAttribute("gen8", sheets.getData("Gen 8!A1:T"));
+        model.addAttribute("gen7", sheets.getData("Gen 7!A1:T"));
+        model.addAttribute("shinymyths", sheets.getData("Shiny Mythicals!A1:T"));
+        model.addAttribute("shinyeggs", sheets.getData("Shiny Eggs!A1:T"));
         return "fortrade.html";
     }
 
