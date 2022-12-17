@@ -1,0 +1,86 @@
+<style>
+.pcard{
+  width: 350px;
+  height: 200px;
+  background: #333333;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.pcard:hover{
+    transform: scale(1);
+    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.left{
+    width: 35%;
+    height: 100%;
+    background: url('https://www.serebii.net/Shiny/SWSH/491.png') center no-repeat;
+    background-size: contain;
+}
+
+.right{
+    height: 100%;
+    background: white;
+    flex-grow: 1;
+}
+
+.header{
+    height: 35%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: lightblue;
+}
+
+.right-content{
+    height: 65%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.rc-item{
+    height: 25%;
+    width: 100%;
+    background: yellow;
+}
+</style>
+
+<div class="pcard">
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div class="header">
+                Member Card Darkrai Oaks Letter Shaymin
+            </div>
+            <div class="right-content">
+                <div class="rc-item">
+                    Jungle / 201113
+                </div>
+                <div class="rc-item">
+                    28/12/2020
+                </div>
+                <div class="rc-item">
+                    Video
+                </div>
+                <div class="rc-item">
+                    u/SimoxxGb -> me
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
