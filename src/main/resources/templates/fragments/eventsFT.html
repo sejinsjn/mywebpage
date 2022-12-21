@@ -1,85 +1,117 @@
 <style>
-.pcard{
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  color: white;
+}
+
+.card {
+  display: flex;
   width: 350px;
   height: 200px;
   background: #333333;
   margin: auto;
   position: relative;
-  overflow: hidden;
-  border-radius: 10px 10px 10px 10px;
+  overflow: visible;
+  border-radius: 10px;
   box-shadow: 0;
   transform: scale(0.95);
   transition: box-shadow 0.5s, transform 0.5s;
 }
 
-.pcard:hover{
-    transform: scale(1);
-    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+.card:hover {
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
 }
 
-.container{
-    height: 100%;
-    width: 100%;
+.card-left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -50px;
+}
+
+.card-image {
+  width: 80%;
+  height: 80%;
+  background: center no-repeat;
+  background: #ffc107;
+  border-radius: 10px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-right {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffc107;
+}
+
+.card-info{
     display: flex;
-}
-
-.left{
-    width: 35%;
-    height: 100%;
-    background: url('https://www.serebii.net/Shiny/SWSH/491.png') center no-repeat;
-    background-size: contain;
-}
-
-.right{
-    height: 100%;
-    background: white;
-    flex-grow: 1;
-}
-
-.header{
-    height: 35%;
-    width: 100%;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: lightblue;
+    margin-bottom: 5px;
 }
 
-.right-content{
-    height: 65%;
-    width: 100%;
-    display: flex;
-    flex-flow: column;
+.card-info-label {
+    width: 30%;
 }
 
-.rc-item{
-    height: 25%;
-    width: 100%;
-    background: yellow;
+card-info-value {
+    width: 70%;
 }
+
+.card-info-label:nth
+
+
 </style>
 
-<div class="pcard">
-    <div class="container">
-        <div class="left"></div>
-        <div class="right">
-            <div class="header">
-                Member Card Darkrai Oaks Letter Shaymin
+<div class="card">
+    <div class="card-left">
+        <div class="card-image">
+            <img src="https://www.serebii.net/Shiny/SWSH/789.png" alt="Darkrai image">
+        </div>
+    </div>
+    <div class="card-right">
+        <div class="card-header">
+            <h3>Member Card Darkrai Oaks Letter Shaymin</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-info">
+                <div class="card-info-value">Jungle / 201113</div>
             </div>
-            <div class="right-content">
-                <div class="rc-item">
-                    Jungle / 201113
-                </div>
-                <div class="rc-item">
-                    28/12/2020
-                </div>
-                <div class="rc-item">
-                    Video
-                </div>
-                <div class="rc-item">
-                    u/SimoxxGb -> me
-                </div>
+            <div class="card-info">
+                <div class="card-info-value">Video</div>
+            </div>
+            <div class="card-info">
+                <div class="card-info-value">u/SimoxxGb -> me</div>
             </div>
         </div>
     </div>
