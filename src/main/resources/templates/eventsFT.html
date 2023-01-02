@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script th:src="@{/js/eventsFT.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/eventsFT.css}" />
+    <script th:src="@{/js/nav.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/nav.css}" />
+</head>
+<body>
+<div class="my-container">
+    <div th:replace="fragments/navMenu.html"></div>
+    <div class="content">
+        <div class="ftcards">
+            <div>
+                <h1>Gen8</h1>
+                <div class="cards" id="gen8"></div>
+            </div>
+            <div>
+                <h1>Gen7</h1>
+                <div class="cards" id="gen7"></div>
+            </div>
+            <div>
+                <h1>Shiny Eggs</h1>
+                <div class="cards" id="shiny-eggs"></div>
+            </div>
+            <div>
+                <h1>Shiny Mythicals</h1>
+                <div class="cards" id="shiny-myths"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    var gen8 = [[${gen8}]];
+    var gen7 = [[${gen7}]];
+    var shinyeggs = [[${shinyeggs}]];
+    var shinymyths = [[${shinymythicals}]];
+
+    $( document ).ready(function() {
+        addItems("gen8", gen8);
+        addItems("gen7", gen7);
+        addItems("shiny-eggs", shinyeggs);
+        addItems("shiny-myths", shinymyths);
+    });
+</script>
+</body>
+</html>

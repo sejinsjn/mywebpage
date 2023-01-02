@@ -12,12 +12,15 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
+import com.google.api.services.sheets.v4.model.Sheet;
+import com.google.api.services.sheets.v4.model.Spreadsheet;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import org.mortbay.jetty.HttpParser;
 
 import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class sheets {
@@ -76,6 +79,20 @@ public class sheets {
         } else {
             return values;
         }
+    }
+
+    public static List<Sheet> getSheetNames() throws IOException, GeneralSecurityException{
+        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+        final String spreadsheetId = "1yBbSIe3iBKsKMO73babEC5TarsSjh2hbCt4g_l86MJY";
+
+        Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+
+        Spreadsheet response = service.spreadsheets().get(spreadsheetId).execute();
+        List<Sheet> sheets = response.getSheets();
+
+        return sheets;
     }
 
 }
