@@ -13,25 +13,20 @@ import java.util.List;
 @Controller
 public class MyController {
 
+    private final String ftsheet = "1yBbSIe3iBKsKMO73babEC5TarsSjh2hbCt4g_l86MJY";
+    private final String farmedsheet = "1MBKJlI5t7bv8IRoFuMdgQBzEgpRe0ZJfX9xTdfK92Y8";
+    private final String mycollection = "1XAiwCodJXGrZB95d7hzA7IuN9_mXSFSPDmx2Pses73E";
+
     @GetMapping("/")
     public String index(Model model) throws GeneralSecurityException, IOException {
         return "index";
     }
 
-    @GetMapping("/for-trade")
-    public String fortrade(Model model) throws GeneralSecurityException, IOException {
-        List<Sheet> ftsheets = sheets.getSheetNames();
-        for(Sheet sheet : ftsheets){
-            model.addAttribute(sheet.getProperties().getTitle().replaceAll("\\s+", "").toLowerCase(), sheets.getData(sheet.getProperties().getTitle() + "!A1:T"));
-        }
-        return "fortrade.html";
-    }
-
     @GetMapping("/eventsFT")
     public String eventsFT(Model model) throws GeneralSecurityException, IOException {
-        List<Sheet> ftsheets = sheets.getSheetNames();
+        List<Sheet> ftsheets = sheets.getSheetNames(ftsheet);
         for(Sheet sheet : ftsheets){
-            model.addAttribute(sheet.getProperties().getTitle().replaceAll("\\s+", "").toLowerCase(), sheets.getData(sheet.getProperties().getTitle() + "!A1:T"));
+            model.addAttribute(sheet.getProperties().getTitle().replaceAll("\\s+", "").toLowerCase(), sheets.getData(sheet.getProperties().getTitle() + "!A1:T", ftsheet));
         }
         return "eventsFT.html";
     }

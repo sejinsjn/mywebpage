@@ -65,6 +65,25 @@ function addItems(element, sheet){
         cardinfovalue.textContent = itemdata[16];
         cardinfo.appendChild(cardinfovalue);
 
+        if(itemdata[17].length !== 0){
+            var cardinfovalue = document.createElement("div");
+            var span = document.createElement("span");
+            cardinfovalue.classList.add("card-info-value");
+            cardinfovalue.setAttribute('data-title', 'D');
+            cardinfovalue.textContent = "Discl.";
+            cardinfovalue.setAttribute('onclick', 'popup(' + i + ')');
+            cardinfovalue.appendChild(span);
+            span.classList.add("popup");
+            span.setAttribute('id', i);
+            span.textContent = itemdata[17];
+            cardinfo.appendChild(cardinfovalue);
+        }
+
         container.appendChild(card);
     }
+}
+
+function popup(id) {
+  var popup = document.getElementById(id);
+  popup.classList.toggle("show");
 }

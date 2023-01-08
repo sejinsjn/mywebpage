@@ -18,33 +18,15 @@
                 <h1>Gen8</h1>
                 <div class="cards" id="gen8"></div>
             </div>
-            <div>
-                <h1>Gen7</h1>
-                <div class="cards" id="gen7"></div>
-            </div>
-            <div>
-                <h1>Shiny Eggs</h1>
-                <div class="cards" id="shiny-eggs"></div>
-            </div>
-            <div>
-                <h1>Shiny Mythicals</h1>
-                <div class="cards" id="shiny-myths"></div>
-            </div>
         </div>
     </div>
 </div>
 
 <script th:inline="javascript">
     var gen8 = [[${gen8}]];
-    var gen7 = [[${gen7}]];
-    var shinyeggs = [[${shinyeggs}]];
-    var shinymyths = [[${shinymythicals}]];
 
     $( document ).ready(function() {
-        addItems("gen8", gen8);
-        addItems("gen7", gen7);
-        addItems("shiny-eggs", shinyeggs);
-        addItems("shiny-myths", shinymyths);
+        if(gen8.length > 3){ addItems("gen8", gen8); }
     });
 </script>
 </body>

@@ -36,6 +36,7 @@ public class sheets {
     private static final String CREDENTIALS_FILE_PATH = "client_secret.json";
     private static final String CREDENTIALS = System.getenv("client_secret");
 
+
     /**
      * Creates an authorized Credential object.
      *
@@ -64,10 +65,9 @@ public class sheets {
      * Prints the names and majors of students in a sample spreadsheet:
      * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
      */
-    public static List<List<Object>> getData(String range) throws IOException, GeneralSecurityException {
+    public static List<List<Object>> getData(String range, String spreadsheetId) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1yBbSIe3iBKsKMO73babEC5TarsSjh2hbCt4g_l86MJY";
 
         Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME).build();
@@ -81,9 +81,8 @@ public class sheets {
         }
     }
 
-    public static List<Sheet> getSheetNames() throws IOException, GeneralSecurityException{
+    public static List<Sheet> getSheetNames(String spreadsheetId) throws IOException, GeneralSecurityException{
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1yBbSIe3iBKsKMO73babEC5TarsSjh2hbCt4g_l86MJY";
 
         Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
@@ -91,8 +90,13 @@ public class sheets {
 
         Spreadsheet response = service.spreadsheets().get(spreadsheetId).execute();
         List<Sheet> sheets = response.getSheets();
-
         return sheets;
     }
 
+    public static List<Sheet> formatSheetArray(List<List<Object>> sheets){
+        for(List row : sheets){
+            System.out.println(row.get(0));
+        }
+        return null;
+    }
 }
