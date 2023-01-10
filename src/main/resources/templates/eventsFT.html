@@ -16,7 +16,33 @@
         <div class="ftcards">
             <div>
                 <h1>Gen8</h1>
-                <div class="cards" id="gen8"></div>
+                <div class="cards" id="gen8">
+                    <div class="card" th:each="pokemon, iterStat : ${gen8}"   th:if="${iterStat.index > 2}">
+                        <div class="card-left">
+                            <div class="card-image">
+                                <img th:src="@{'https://www.serebii.net/swordshield/pokemon/' + ${pokemon[0]} + '.png'}" th:if="${pokemon[5] eq 'FALSE'}">
+                                <img th:src="@{'https://www.serebii.net/Shiny/SWSH/' + ${pokemon[0]} + '.png'}" th:if="${pokemon[5] eq 'TRUE'}">
+                            </div>
+                        </div>
+                        <div class="card-right">
+                            <div class="card-header">
+                                <h3 th:text="${pokemon[3]}"></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-info">
+                                    <div class="card-info-value" th:attr="data-title=${pokemon[2]}" th:text="${pokemon[2]}"></div>
+                                    <div class="card-info-value" th:attr="data-title=${pokemon[13]}" th:text="${pokemon[13]}"></div>
+                                    <div class="card-info-value" th:attr="data-title=${pokemon[15]}" th:text="${pokemon[15]}"></div>
+                                    <div class="card-info-value" th:attr="data-title=${pokemon[16]}" th:text="${pokemon[16]}"></div>
+                                    <div class="card-info-value" data-title="Discl." th:attr="onclick=|popup(${iterStat.index})|"  th:inline="text" th:if="${pokemon[17] != ''}">
+                                        Discl.
+                                        <span class="popup" th:attr="id=${iterStat.index}" data-title="${pokemon[17]}" th:utext="${pokemon[17]}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -24,10 +50,11 @@
 
 <script th:inline="javascript">
     var gen8 = [[${gen8}]];
+    console.log(gen8)
 
-    $( document ).ready(function() {
-        if(gen8.length > 3){ addItems("gen8", gen8); }
-    });
 </script>
+
+
+
 </body>
 </html>
